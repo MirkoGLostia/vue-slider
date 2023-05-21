@@ -29,6 +29,9 @@
     align-items: flex-end;
     width: 800px;
     height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
     /* text */
@@ -37,6 +40,7 @@
         color: white;
         text-align: end;
         padding: 20px;
+        padding-left: 40px;
     }
 
 
@@ -67,19 +71,28 @@
     #side-image-container {
         height: 440px;
         width: 100%;
-        position: relative;
         overflow: hidden;
     }
-
+    
     #side-image-container > div {
+        position: relative;
         height: 88px;
         width: 100%;
     }
 
-    .cover {
-        height: 100%;
+    #side-image-container img {
+        height: 88px;
         width: 100%;
-        background-color: blue;
+        object-fit: cover;
+    }
+
+    .cover {
+        height: 88px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
         z-index: 10;
     }
 

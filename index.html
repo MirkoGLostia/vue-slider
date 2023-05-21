@@ -13,55 +13,32 @@
 
     <main id="container">
         <!-- container of the big pictures -->
-        <div id="main-image-container" class="position">
-            <div id="text-container" class="position">
-                <h2>titolo</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet cum nihil consectetur accusamus illum asperiores quam minus, dolores aliquid</p>
+        <div id="main-image-container" v-bind:style="{ 'background-image': 'url(' + images[startValue].image + ')' }">
+            <div id="text-container">
+                <h2>{{images[startValue].title}}</h2>
+                <p>{{images[startValue].text}}</p>
             </div>
         </div>
 
         <!-- side show in vertical -->
         <div id="functionality-container">
             <!-- button up -->
-            <div class="button">
+            <div class="button" @click="upperImage">
                 <i class="fa-solid fa-angle-up"></i>
             </div>
 
             <!-- side images container -->
             <div id="side-image-container">
-                <div class="position">
-                    <div class="cover">
-                        
-                    </div>
-                </div>
-
-                <div class="position">
-                    <div class="cover deactive">
-                        
-                    </div>
-                </div>
-
-                <div class="position">
-                    <div class="cover">
-                        
-                    </div>
-                </div>
-
-                <div class="position">
-                    <div class="cover">
-                        
-                    </div>
-                </div>
-
-                <div class="position">
-                    <div class="cover">
+                <div v-for = "(img, i) in images">
+                    <img :src = "img.image" alt="">
+                    <div class="cover" :class = "startValue === i ? 'deactive' : ''">
                         
                     </div>
                 </div>
             </div>
 
             <!-- button down -->
-            <div class="button down">
+            <div class="button down" @click="lowerImage">
                 <i class="fa-solid fa-angle-down"></i>
             </div>
         </div>
@@ -70,6 +47,7 @@
 
 
 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     
 </body>

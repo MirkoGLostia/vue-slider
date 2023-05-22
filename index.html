@@ -13,7 +13,10 @@
 
     <main id="container">
         <!-- container of the big pictures -->
-        <div id="main-image-container" v-bind:style="{ 'background-image': 'url(' + images[startValue].image + ')' }">
+        <div id="main-image-container" 
+        v-bind:style="{ 'background-image': 'url(' + images[startValue].image + ')' }"
+        @mouseover = "stopAutoPlay"
+        @mouseleave = "autoPlay">
             <div id="text-container">
                 <h2>{{images[startValue].title}}</h2>
                 <p>{{images[startValue].text}}</p>
@@ -21,7 +24,9 @@
         </div>
 
         <!-- side show in vertical -->
-        <div id="functionality-container">
+        <div id="functionality-container"
+        @mouseover = "stopAutoPlay"
+        @mouseleave = "autoPlay">
             <!-- button up -->
             <div class="button" @click="upperImage">
                 <i class="fa-solid fa-angle-up"></i>
@@ -30,10 +35,11 @@
             <!-- side images container -->
             <div id="side-image-container">
                 <div v-for = "(img, i) in images">
-                    <img :src = "img.image" alt="">
-                    <div class="cover" :class = "startValue === i ? 'deactive' : ''">
-                        
-                    </div>
+                    <img :src = "img.image">
+
+                    <div class="cover" 
+                    :class = "startValue === i ? 'deactive' : ''"
+                    @click = "selectImage(i)"></div>
                 </div>
             </div>
 

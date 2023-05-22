@@ -63,6 +63,7 @@ createApp( {
                 }
             ],
             startValue : 0,
+            timer : 0,
         }
     },
 
@@ -83,8 +84,30 @@ createApp( {
             if (this.startValue === this.images.length) {
                 this.startValue = 0;
             }
+        },
+
+        selectImage : function (i) {
+            this.startValue = i;
+        },
+
+        autoPlay : function () {
+
+            this.timer = setInterval(this.lowerImage, 3000);
+            
+        },
+
+        stopAutoPlay : function () {
+
+            this.timer = clearInterval(this.timer);
+
         }
+      
+    },
+
+    mounted () {
+        this.autoPlay();
     }
+
 }).mount ("#container");
 
 
